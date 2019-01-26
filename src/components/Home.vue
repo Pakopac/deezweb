@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-   home
+    <div class="blockTitleHome">
+      <h1>Bienvenue sur Deezweb</h1>
+      <p>L'application qui permet facilement d'écouter de la musique.</p>
+    </div>
   </div>
 </template>
 
@@ -11,5 +14,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.blockTitleHome{
+  padding: 50px 30px;
+  margin-left: 5%;
+  margin-right: 5%;
+  background: #E8EBEE
+}
+.blockTitleHome > *{
+  margin: 0;
+}
+.blockTitleHome > p {
+  margin-top: 10px 
+}
 </style>
