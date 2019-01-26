@@ -24,7 +24,7 @@ export default {
   color: #2c3e50; 
 }
 #app > *:not(nav){
-  margin-left: 3em;
+  margin: 0 3em;
 }
 body{
   margin: 0;

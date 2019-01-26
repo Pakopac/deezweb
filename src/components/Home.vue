@@ -16,7 +16,6 @@ export default {
 <style scoped lang="scss">
 .blockTitleHome{
   padding: 50px 30px;
-  margin-right: 5%;
   background: #E8EBEE
 }
 .blockTitleHome > *{
