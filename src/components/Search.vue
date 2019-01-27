@@ -23,9 +23,12 @@
     </form> 
 
     <hr>
-    <div v-if="songs" v-for="song in songs.data" :key="song.id">
-      {{song.title}}
-    </div>
+  <div v-if="songs.data && songs.data.length !== 0">
+      <div v-for="song in songs.data" :key="song.id">
+        {{song.title}}
+      </div>
+  </div>
+  <p class="no-result" v-else-if="songs !== ''">Aucun résultat pour cette recherche ...</p>
   </div>
 </template>
 
@@ -44,7 +47,7 @@ export default {
   methods:{
       getSearch(){
         TrackService.fetchAll(this.q, this.order).then(songs => {
-        this.songs = songs
+          this.songs = songs
       })
     },
   }
@@ -89,5 +92,9 @@ export default {
 .btn:hover, .btn:active{
     border: 2px solid #7EBCFE;
     box-shadow: 0 0 10px #7EBCFE;
+  }
+  .no-result{
+    font-size: 1.2em;
+    font-weight: bold
   }
 </style>
