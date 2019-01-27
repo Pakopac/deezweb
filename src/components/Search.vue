@@ -4,32 +4,51 @@
     <p>Recherchez un titre sur Deezer en utilisant le formulaire suivant</p>
     <hr>
 
-    <form>
+    <form  @submit.prevent="getSearch">
       <div class="searchTitle">
         <span>Titre: </span>
-        <input placeholder="Eminem, Armin Van Buuren, Rihanna, ..." type="text">
+        <input placeholder="Eminem, Armin Van Buuren, Rihanna, ..." type="text" v-model="q">
       </div>
       <div class="searchFilter">
         <span>Trier par:</span>
-        <select>
-          <option>Album</option>
-          <option>Artiste</option>
-          <option>Musique</option>
-          <option>Les plus populaires</option>
-          <option>Les mieux notés</option>
+        <select v-model="order">
+          <option value="ALBUM_ASC">Album</option>
+          <option value="ARTIST_ASC">Artiste</option>
+          <option value="TRACK_ASC">Musique</option>
+          <option value="RANKING_DESC">Les plus populaires</option>
+          <option value="RATING_DESC">Les mieux notés</option>
         </select>
       </div>
       <button class="btn">Go</button>
-    </form>
+    </form> 
 
     <hr>
+    <div v-if="songs" v-for="song in songs.data" :key="song.id">
+      {{song.title}}
+    </div>
   </div>
 </template>
 
 <script>
+import TrackService from '@/services/TrackService.js'
+
 export default {
   name: 'Search',
-}
+  data(){
+    return {
+      songs: '',
+      q: '',
+      order: 'ALBUM_ASC',
+    }
+  },
+  methods:{
+      getSearch(){
+        TrackService.fetchAll(this.q, this.order).then(songs => {
+        this.songs = songs
+      })
+    },
+  }
+  }
 </script>
 
 <style scoped lang="scss">
