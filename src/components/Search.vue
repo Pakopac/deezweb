@@ -4,7 +4,7 @@
     <p>Recherchez un titre sur Deezer en utilisant le formulaire suivant</p>
     <hr>
 
-    <form  @submit.prevent="getSearch">
+    <form @submit.prevent="getSearch">
       <div class="searchTitle">
         <span>Titre: </span>
         <input placeholder="Eminem, Armin Van Buuren, Rihanna, ..." type="text" v-model="q">
@@ -23,31 +23,33 @@
     </form> 
 
     <hr>
-  <div v-if="songs.data && songs.data.length !== 0">
-      <div v-for="song in songs.data" :key="song.id">
-        {{song.title}}
-      </div>
+  <div class="trackList" v-if="tracks.data && tracks.data.length !== 0">
+      <TrackCard :track="track" v-for="track in tracks.data" :key="track.id"/>
   </div>
-  <p class="no-result" v-else-if="songs !== ''">Aucun résultat pour cette recherche ...</p>
+  <p class="no-result" v-else-if="tracks !== ''">Aucun résultat pour cette recherche ...</p>
   </div>
 </template>
 
 <script>
+import TrackCard from '@/components/TrackCard.vue'
 import TrackService from '@/services/TrackService.js'
 
 export default {
   name: 'Search',
   data(){
     return {
-      songs: '',
+      tracks: '',
       q: '',
       order: 'ALBUM_ASC',
     }
   },
+  components:{
+    TrackCard
+  },
   methods:{
       getSearch(){
-        TrackService.fetchAll(this.q, this.order).then(songs => {
-          this.songs = songs
+        TrackService.fetchAll(this.q, this.order).then(tracks => {
+          this.tracks = tracks
       })
     },
   }
@@ -77,7 +79,7 @@ export default {
     box-shadow: 0 0 10px #9ecaed;
   }
   select{
-    cursor: pointer;
+    cursor: pointer;  
   }
   .btn {
   display: inline-block;
@@ -96,5 +98,15 @@ export default {
   .no-result{
     font-size: 1.2em;
     font-weight: bold
+  }
+  .trackList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+  .trackList > * {
+    box-sizing: border-box;
+    width: calc(94%/3);
+    margin: 1%;
   }
 </style>

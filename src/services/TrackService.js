@@ -4,7 +4,6 @@ const API_ENDPOINT = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com
 
 export default {
     fetchAll(q,order) {
-        console.log(`${API_ENDPOINT}/?q=${q}&order=${order}`)
         return axios.get(`${API_ENDPOINT}/?q=${q}&order=${order}`)
             .then(response => response.data)
             .then(response => {
