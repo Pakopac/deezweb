@@ -11,7 +11,8 @@
     </div>
     <div style="display:block">
     <audio controls :src="track.preview"></audio>
-    <br><button class="btnFav"><i class="fa fa-heart"></i> Ajouter aux favoris</button>
+    <br>
+    <button @click="addFav" v-bind:class="isFav"><i class="fa fa-heart"></i> Ajouter aux favoris</button>
     </div>
   </article>
 </template>
@@ -19,7 +20,43 @@
 <script>
 export default {
     name: 'TrackCard',
-    props: ['track']
+    props: ['track'],
+    data() {
+        return{
+            Fav: true
+        }
+    },
+    created(){
+        if(localStorage.getItem(`track${this.track.id}`)){
+            var track = localStorage.getItem(`track${this.track.id}`)
+            if(JSON.parse(track).isFav === 'yes'){
+                this.Fav = false
+            }
+        }
+    },
+    methods:{ 
+        addFav(){
+                if(this.track.isFav === 'yes'){
+                    this.Fav = true
+                    this.track.isFav = 'no';
+                }
+                else{
+                    this.track.isFav = 'yes';
+                    this.Fav = false
+                }
+                localStorage.setItem(`track${this.track.id}`, JSON.stringify(this.track));
+        },
+    },
+    computed:{
+        isFav: function(){
+            if(this.Fav === true){
+                return "btnFav"
+            }
+            else{
+                return "btnUnFav"
+            }
+        }
+    }
 }
 </script>
 
@@ -74,4 +111,14 @@ button{
     background: red;
     cursor: pointer;
 }
+.btnUnFav{
+    color: white;
+    background: red
+}
+.btnUnFav:hover{
+    cursor: pointer;
+    color: red;
+    background: white
+}
+
 </style>

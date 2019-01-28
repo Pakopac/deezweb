@@ -28,5 +28,9 @@ export default {
 }
 body{
   margin: 0;
-  }
+}
+.no-result{
+  font-size: 1.2em;
+  font-weight: bold
+}
 </style>

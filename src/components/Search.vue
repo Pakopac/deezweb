@@ -95,10 +95,6 @@ export default {
     border: 2px solid #7EBCFE;
     box-shadow: 0 0 10px #7EBCFE;
   }
-  .no-result{
-    font-size: 1.2em;
-    font-weight: bold
-  }
   .trackList {
   display: flex;
   align-items: center;
