@@ -95,14 +95,4 @@ export default {
     border: 2px solid #7EBCFE;
     box-shadow: 0 0 10px #7EBCFE;
   }
-  .trackList {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-  .trackList > * {
-    box-sizing: border-box;
-    width: calc(94%/3);
-    margin: 1%;
-  }
 </style>

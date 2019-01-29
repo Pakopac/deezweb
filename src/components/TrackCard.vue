@@ -29,31 +29,28 @@ export default {
     },
     created(){
         if(localStorage.getItem(`track${this.track.id}`)){
-            var track = localStorage.getItem(`track${this.track.id}`)
-            if(JSON.parse(track).isFav === 'yes'){
-                this.Fav = false
-            }
+            this.Fav = false
+        }
+        else{
+            this.Fav = true
         }
     },
     methods:{ 
         addFav(){
-                if(this.track.isFav === 'yes'){
-                    this.Fav = true
-                    this.track.isFav = 'no';
-                }
-                else{
-                    this.track.isFav = 'yes';
+            //console.log(this.track)
+                if(localStorage.getItem(`track${this.track.id}`) == null){
+                    localStorage.setItem(`track${this.track.id}`, JSON.stringify(this.track));
                     this.Fav = false
                 }
-                localStorage.setItem(`track${this.track.id}`, JSON.stringify(this.track));
-                this.allFav.push(this.track.id)
-                console.log(allFav);
-                localStorage.setItem('allFav', this.allFav)
+                else{
+                    localStorage.removeItem(`track${this.track.id}`);
+                    this.Fav = true
+                }
         },
     },
     computed:{
         isFav: function(){
-            if(this.Fav === true){
+            if(this.Fav == true){
                 return "btnFav"
             }
             else{
@@ -61,15 +58,15 @@ export default {
             }
         },
         iconButton: function(){
-            if(this.Fav === true){
+            if(this.Fav == true){
                 return "fa fa-heart"
             }
             else{
-                return "fa fas-heart-broken"
+                return "fa fa-trash"
             }
         },
         textButton: function(){
-             if(this.Fav === true){
+             if(this.Fav == true){
                 return "Ajouter aux favoris"
             }
             else{
@@ -120,6 +117,9 @@ button{
     padding: 7px;
     border-radius: 5px;
     transition: 0.5s;
+}
+button i{
+    margin-right: 10px;
 }
 .btnFav{
     color: red;

@@ -33,4 +33,14 @@ body{
   font-size: 1.2em;
   font-weight: bold
 }
+.trackList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.trackList > * {
+    box-sizing: border-box;
+    width: calc(94%/3);
+    margin: 1%;
+}
 </style>
