@@ -43,4 +43,13 @@ body{
     width: calc(94%/3);
     margin: 1%;
 }
+button{
+    padding: 7px;
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+button i{
+    margin-right: 10px;
+}
 </style>

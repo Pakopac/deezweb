@@ -110,35 +110,29 @@ img {
     line-height: 1.6em;
 }
 audio{
-    background: white;
+    background: #FDFDFE;
     border-radius:30px
 }
-button{
-    padding: 7px;
-    border-radius: 5px;
-    transition: 0.5s;
-}
-button i{
-    margin-right: 10px;
-}
 .btnFav{
-    color: red;
+    color: #DB3545;
     background: transparent;
-    border: 1px solid red;
+    border: 1px solid #DB3545;
 }
 .btnFav:hover{
-    color: white;
-    background: red;
+    color: #FDFDFE;
+    background: #DB3545;
     cursor: pointer;
 }
 .btnUnFav{
-    color: white;
-    background: red
+    color: #FDFDFE;
+    background: #DB3545;
+    border: 1px solid transparent;
 }
 .btnUnFav:hover{
     cursor: pointer;
-    color: red;
-    background: white
+    color: #DB3545;
+    border:1px solid #DB3545;
+    background: #FDFDFE;
 }
 
 </style>
