@@ -23,9 +23,11 @@
     </form> 
 
     <hr>
+  <div v-if="tracks.data && tracks.data.length !== 0">
     <h2>Résultats</h2>
-  <div class="trackList" v-if="tracks.data && tracks.data.length !== 0">
+      <div class="trackList">
       <TrackCard :track="track" v-for="track in tracks.data" :key="track.id"/>
+      </div>
   </div>
   <p class="no-result" v-else-if="tracks !== ''">Aucun résultat pour cette recherche ...</p>
   </div>
