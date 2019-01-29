@@ -79,7 +79,9 @@ export default {
 
 <style scoped lang="scss">
 .track-card{
-  box-shadow: 0 0 15px #c0c0c0;
+    width: 31.5%;
+    height: 15em;
+    border: 1px solid #E3E3E3;
     border-radius: 2px;
     background-color: #fafafa;
     overflow: auto;
@@ -110,8 +112,13 @@ img {
     line-height: 1.6em;
 }
 audio{
+    width: 90%;
+    margin: 0 5%;
     background: #FDFDFE;
     border-radius:30px
+}
+button{
+    margin-left: 5%;
 }
 .btnFav{
     color: #DB3545;

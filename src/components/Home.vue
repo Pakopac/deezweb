@@ -36,21 +36,22 @@ export default {
   },
   methods:{
     changeTrack(){
+      this.tracks = [];
 
     for(var track in window.localStorage){
       if(JSON.parse(track.startsWith("track"))){
         this.tracks.push(JSON.parse(window.localStorage[track]))
       }
     }
-
+    
     var randomTrack = this.tracks[Math.floor(Math.random()*this.tracks.length)]
-    if(randomTrack.id != this.track.id){
+    if(randomTrack.id != this.track.id || this.tracks.length == 1){
       this.track = randomTrack
     }
     else{
       this.changeTrack()
     }
-    
+
     }
   }
 }
@@ -77,14 +78,14 @@ export default {
   width: 50%
 }
 button{
-    background: white;
-    border: 1px solid blue;
-    color: blue;
-    margin-top: 10px
+    background: #FDFDFE;
+    border: 1px solid #007BFE;
+    color: #007BFE;
+    margin-top: 10px;
 }
 button:hover{
-  background: blue;
-  color: white;
+  background: #007BFE;
+  color: #FDFDFE;
 }
 button i{
     margin-right: 10px;

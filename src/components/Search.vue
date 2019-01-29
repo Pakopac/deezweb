@@ -23,6 +23,7 @@
     </form> 
 
     <hr>
+    <h2>Résultats</h2>
   <div class="trackList" v-if="tracks.data && tracks.data.length !== 0">
       <TrackCard :track="track" v-for="track in tracks.data" :key="track.id"/>
   </div>

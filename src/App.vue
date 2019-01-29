@@ -35,13 +35,7 @@ body{
 }
 .trackList {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-}
-.trackList > * {
-    box-sizing: border-box;
-    width: calc(94%/3);
-    margin: 1%;
 }
 button{
     padding: 7px;
@@ -51,5 +45,13 @@ button{
 }
 button i{
     margin-right: 10px;
+}
+hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #E3E3E3;
+    margin: 1em 0;
+    padding: 0; 
 }
 </style>
