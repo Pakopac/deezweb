@@ -12,7 +12,7 @@
     <div style="display:block">
     <audio controls :src="track.preview"></audio>
     <br>
-    <button @click="addFav" v-bind:class="isFav"><i class="fa fa-heart"></i> Ajouter aux favoris</button>
+    <button @click="addFav" v-bind:class="isFav"><i :class="iconButton"></i>{{textButton}}</button>
     </div>
   </article>
 </template>
@@ -23,7 +23,8 @@ export default {
     props: ['track'],
     data() {
         return{
-            Fav: true
+            Fav: true,
+            allFav: []
         }
     },
     created(){
@@ -45,6 +46,9 @@ export default {
                     this.Fav = false
                 }
                 localStorage.setItem(`track${this.track.id}`, JSON.stringify(this.track));
+                this.allFav.push(this.track.id)
+                console.log(allFav);
+                localStorage.setItem('allFav', this.allFav)
         },
     },
     computed:{
@@ -54,6 +58,22 @@ export default {
             }
             else{
                 return "btnUnFav"
+            }
+        },
+        iconButton: function(){
+            if(this.Fav === true){
+                return "fa fa-heart"
+            }
+            else{
+                return "fa fas-heart-broken"
+            }
+        },
+        textButton: function(){
+             if(this.Fav === true){
+                return "Ajouter aux favoris"
+            }
+            else{
+                return "Retirer des favoris"
             }
         }
     }
